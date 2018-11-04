@@ -21,7 +21,10 @@ public class Step2a {
 		Instant start = Instant.now();
 
 		for (int i = 1; i <= 3; i++) {
-			client.get().uri("/person/{id}", i).retrieve().bodyToMono(Person.class);
+			client.get().uri("/person/{id}", i)
+					.retrieve()
+					.bodyToMono(Person.class)
+					.block();
 		}
 
 		logTime(start);
